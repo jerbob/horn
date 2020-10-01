@@ -65,8 +65,9 @@ class Melody:
 
     def as_str(self, padding: int) -> str:
         return (
-            f"{Fore.WHITE}{self.name.ljust(padding)}{Style.RESET_ALL}"
-            f"{self.rest_string} ".join(map(str, self.actions))
+            f"{Fore.WHITE}{self.name.ljust(padding)}{Style.RESET_ALL}" + (
+                f"{self.rest_string} ".join(map(str, self.actions))
+            )
         )
 
 
