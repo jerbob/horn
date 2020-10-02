@@ -12,7 +12,7 @@ class Button:
     UP = "▲"
     LEFT = "◀"
     DOWN = "▼"
-    RIGHT = "▶"
+    RIGHT = "⬤"
 
 
 class Note(Enum):
@@ -43,7 +43,7 @@ class Move:
 
     def __str__(self) -> str:
         return (
-            f"{Back.BLACK}{self.note.fore_colour}"
+            f"{Back.RESET}{self.note.fore_colour}"
             f"{' '.join(self.buttons)} {Style.RESET_ALL}"
         ).ljust(18, " ")
 
