@@ -6,11 +6,84 @@ from huntinghorn.utils import Button, Horn, Melody, Move, Note
 
 
 horns: Dict[str, Horn] = {
-    "Volcanic Rock": Horn("Volcanic Rock", [
-        Move([Button.RIGHT], Note.MAGENTA),
-        Move([Button.UP, Button.RIGHT], Note.AQUA),
-        Move([Button.UP], Note.YELLOW)
-    ])
+    horn.name: horn
+    for horn in [
+        Horn("Blessed Ocarina", [
+            Move([Button.RIGHT], Note.WHITE),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.BLUE),
+        ]),
+        Horn("Black Lute", [
+            Move([Button.RIGHT], Note.WHITE),
+            Move([Button.UP], Note.AQUA),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Hunter's Horn", [
+            Move([Button.RIGHT], Note.WHITE),
+            Move([Button.UP], Note.BLUE),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Feather Whistle", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.BLUE),
+        ]),
+        Horn("Glass Queen", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.YELLOW),
+        ]),
+        Horn("Velociprey Baloon+", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.YELLOW),
+        ]),
+        Horn("Heavy Bagpipe+", [
+            Move([Button.RIGHT], Note.WHITE),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("War Conga", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.YELLOW),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Blood Flute", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.GREEN),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Volcanic Rock", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.YELLOW),
+            Move([Button.UP, Button.RIGHT], Note.AQUA),
+        ]),
+        Horn("Shell Castanet", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.BLUE),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Tigrex Horn", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.AQUA),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Spirit Dragonwood Horn", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.BLUE),
+            Move([Button.UP, Button.RIGHT], Note.RED),
+        ]),
+        Horn("Gold Recorder", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.AQUA),
+            Move([Button.UP, Button.RIGHT], Note.BLUE),
+        ]),
+        Horn("Gaoren Bell", [
+            Move([Button.RIGHT], Note.MAGENTA),
+            Move([Button.UP], Note.BLUE),
+            Move([Button.UP, Button.RIGHT], Note.YELLOW),
+        ]),
+    ]
 }
 
 melodies: List[Melody] = [
