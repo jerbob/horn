@@ -1,90 +1,19 @@
 """Constants and Enums for use in the main program."""
 
+import json
 from typing import Dict, List
+from pathlib import Path
 
 from huntinghorn.utils import Button, Horn, Melody, Move, Note
 
+ROOT = Path(__file__).parent
 
-horns: Dict[str, Horn] = {
-    horn.name: horn
-    for horn in [
-        Horn("Blessed Ocarina", [
-            Move([Button.RIGHT], Note.WHITE),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.BLUE),
-        ]),
-        Horn("Black Lute", [
-            Move([Button.RIGHT], Note.WHITE),
-            Move([Button.UP], Note.AQUA),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Hunter's Horn", [
-            Move([Button.RIGHT], Note.WHITE),
-            Move([Button.UP], Note.BLUE),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Feather Whistle", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.BLUE),
-        ]),
-        Horn("Glass Queen", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.YELLOW),
-        ]),
-        Horn("Velociprey Baloon+", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.YELLOW),
-        ]),
-        Horn("Heavy Bagpipe+", [
-            Move([Button.RIGHT], Note.WHITE),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("War Conga", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.YELLOW),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Blood Flute", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.GREEN),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Volcanic Rock", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.YELLOW),
-            Move([Button.UP, Button.RIGHT], Note.AQUA),
-        ]),
-        Horn("Shell Castanet", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.BLUE),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Tigrex Horn", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.AQUA),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Spirit Dragonwood Horn", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.BLUE),
-            Move([Button.UP, Button.RIGHT], Note.RED),
-        ]),
-        Horn("Gold Recorder", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.AQUA),
-            Move([Button.UP, Button.RIGHT], Note.BLUE),
-        ]),
-        Horn("Gaoren Bell", [
-            Move([Button.RIGHT], Note.MAGENTA),
-            Move([Button.UP], Note.BLUE),
-            Move([Button.UP, Button.RIGHT], Note.YELLOW),
-        ]),
-    ]
-}
+
+with (ROOT / "horns.json").open() as file:
+    horns: Dict[str, Horn] = {
+        name: Horn(name, [Move(move[0], Note(move[1])) for move in horn])
+        for name, horn in json.load(file).items()
+    }
 
 melodies: List[Melody] = [
     Melody("Speed up", [Note.WHITE, Note.WHITE]),
