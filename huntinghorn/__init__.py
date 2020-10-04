@@ -20,7 +20,7 @@ from typing import Optional, Set
 from docopt import docopt
 
 from huntinghorn.constants import Note, horns, melodies
-from huntinghorn.ui import prompt_for_horn
+from huntinghorn.prompt import prompt_for_horn
 from huntinghorn.utils import Horn
 
 
