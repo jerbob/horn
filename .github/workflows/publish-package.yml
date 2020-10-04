@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  ci:
+  publish:
     strategy:
       fail-fast: false
 
@@ -32,4 +32,4 @@ jobs:
         run: poetry build
 
       - name: Publish package
-        run: poetry publish -u ${{ secrets.username }} -p ${{ secrets.password }}
+        run: poetry publish -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
