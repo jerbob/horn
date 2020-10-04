@@ -44,8 +44,8 @@ class Move:
     def __str__(self) -> str:
         return (
             f"{Back.RESET}{self.note.fore_colour}"
-            f"{' '.join(self.buttons)} {Style.RESET_ALL}"
-        ).ljust(18, " ")
+            f"{'+'.join(self.buttons)} {Style.RESET_ALL}"
+        ).center(18, " ")
 
 
 @dataclass
@@ -53,7 +53,7 @@ class Melody:
     name: str
     actions: Union[List[Note], List[Move]]
 
-    rest_string: str = "𝄽"
+    rest_string: str = f"{Fore.WHITE}𝄽{Fore.RESET}"
 
     def __post_init__(self) -> None:
         # Don't include rests for normal notes
