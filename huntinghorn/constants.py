@@ -7,6 +7,7 @@ from typing import Dict, List
 from huntinghorn.utils import Horn, Melody, Move, Note
 
 DATA_ROOT = Path(__file__).parent / "data"
+NOTES = {note.name[0]: note for note in Note}
 
 
 with (DATA_ROOT / "horns.json").open() as file:

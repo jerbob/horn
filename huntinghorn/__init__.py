@@ -19,7 +19,7 @@ from docopt import docopt
 
 from pkg_resources import get_distribution
 
-from huntinghorn.constants import Note, horns, melodies
+from huntinghorn.constants import NOTES, Note, horns, melodies
 from huntinghorn.prompt import prompt_for_horn
 from huntinghorn.utils import Horn
 
@@ -32,18 +32,9 @@ def main() -> None:
 
     notes: Set[Note] = set()
     horn: Optional[Horn] = None
-    note_names = dict(
-        A=Note.AQUA,
-        B=Note.BLUE,
-        G=Note.GREEN,
-        M=Note.MAGENTA,
-        R=Note.RED,
-        W=Note.WHITE,
-        Y=Note.YELLOW
-    )
 
     for name in arguments["--notes"]:
-        if note := note_names.get(name):
+        if note := NOTES.get(name):
             notes.add(note)
 
     horn = horns.get(arguments["--horn"])
