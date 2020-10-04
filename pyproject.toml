@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "huntinghorn"
-version = "0.2.4"
+version = "0.2.5"
 description = "Command-Line tool for Hunting Horn users."
 authors = ["Jeremiah Boby <mail@jeremiahboby.me>"]
 license = "MIT"

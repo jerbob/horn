@@ -13,7 +13,7 @@ Options:
     --notes=<notes>  Notes to filter by [default: ABGMRWY]
 """
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 from typing import Optional, Set
 
