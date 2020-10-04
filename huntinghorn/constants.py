@@ -1,66 +1,22 @@
 """Constants and Enums for use in the main program."""
 
 import json
-from typing import Dict, List
 from pathlib import Path
+from typing import Dict, List
 
-from huntinghorn.utils import Button, Horn, Melody, Move, Note
+from huntinghorn.utils import Horn, Melody, Move, Note
 
 ROOT = Path(__file__).parent
 
 
 with (ROOT / "horns.json").open() as file:
     horns: Dict[str, Horn] = {
-        name: Horn(name, [Move(move[0], Note(move[1])) for move in horn])
+        name: Horn(name, moves=[Move(move[0], Note(move[1])) for move in horn])
         for name, horn in json.load(file).items()
     }
 
-melodies: List[Melody] = [
-    Melody("Speed up", [Note.WHITE, Note.WHITE]),
-    Melody("Speed up", [Note.MAGENTA, Note.MAGENTA]),
-    Melody("Clairvoyance", [Note.BLUE, Note.BLUE, Note.AQUA]),
-    Melody("Supersonic Waves", [Note.YELLOW, Note.YELLOW, Note.YELLOW]),
-    Melody("Attack Up [Lo]", [Note.WHITE, Note.RED]),
-    Melody("Attack Up [Hi]", [Note.MAGENTA, Note.RED, Note.RED]),
-    Melody("Defense Up [Lo]", [Note.RED, Note.YELLOW]),
-    Melody("Defense Up [Hi]", [Note.RED, Note.GREEN, Note.RED]),
-    Melody("Defense Up [Hi]", [Note.RED, Note.AQUA, Note.AQUA, Note.MAGENTA]),
-    Melody("Health Inc [Lo]", [Note.RED, Note.BLUE, Note.WHITE]),
-    Melody("Health Inc [Mid]", [Note.RED, Note.RED, Note.AQUA]),
-    Melody("Health Inc [Hi]", [Note.RED, Note.BLUE, Note.RED, Note.MAGENTA]),
-    Melody("Wind Reduce", [Note.BLUE, Note.BLUE, Note.RED]),
-    Melody("Wind Cancel", [Note.BLUE, Note.BLUE, Note.GREEN]),
-    Melody("Wind Cancel", [Note.BLUE, Note.AQUA, Note.BLUE]),
-    Melody("Wind All Cancel", [Note.BLUE, Note.BLUE, Note.YELLOW, Note.MAGENTA]),
-    Melody("Marathon [Lo]", [Note.WHITE, Note.BLUE]),
-    Melody("Marathon [Hi]", [Note.MAGENTA, Note.BLUE, Note.BLUE]),
-    Melody("Health Rec [Lo]", [Note.MAGENTA, Note.GREEN]),
-    Melody("Health Rec [Mid]", [Note.GREEN, Note.MAGENTA, Note.YELLOW]),
-    Melody("Health Rec [Hi]", [Note.GREEN, Note.GREEN, Note.MAGENTA, Note.AQUA]),
-    Melody("Health Rec [Lo] & Antidote", [Note.WHITE, Note.GREEN]),
-    Melody("Health Rec [Mid] & Antidote", [Note.GREEN, Note.BLUE, Note.MAGENTA, Note.BLUE]),
-    Melody("Health Rec [Mid] & Deodorant", [Note.GREEN, Note.WHITE, Note.AQUA]),
-    Melody("Recover Spd Up [Lo]", [Note.GREEN, Note.GREEN, Note.YELLOW]),
-    Melody("Recover Spd Up [Hi]", [Note.GREEN, Note.RED, Note.GREEN, Note.MAGENTA]),
-    Melody("Heavenly Protection", [Note.GREEN, Note.YELLOW, Note.MAGENTA, Note.YELLOW]),
-    Melody("Hear Protect [Lo]", [Note.AQUA, Note.AQUA, Note.RED]),
-    Melody("Hear Protect [Hi]", [Note.AQUA, Note.AQUA, Note.GREEN, Note.MAGENTA]),
-    Melody("No Cold & Snow Res", [Note.AQUA, Note.AQUA, Note.YELLOW]),
-    Melody("No Heat", [Note.AQUA, Note.GREEN, Note.AQUA]),
-    Melody("No Faint", [Note.AQUA, Note.BLUE, Note.MAGENTA]),
-    Melody("No Paralysis", [Note.AQUA, Note.YELLOW, Note.YELLOW]),
-    Melody("No Quakes", [Note.AQUA, Note.YELLOW, Note.AQUA]),
-    Melody("Element Attack Up", [Note.YELLOW, Note.BLUE, Note.YELLOW, Note.WHITE]),
-    Melody("Fire Res Up [Lo]", [Note.YELLOW, Note.RED]),
-    Melody("Fire Res Up [Hi]", [Note.YELLOW, Note.BLUE, Note.WHITE]),
-    Melody("Water Res Up [Lo]", [Note.YELLOW, Note.BLUE, Note.MAGENTA]),
-    Melody("Water Res Up [Hi]", [Note.YELLOW, Note.BLUE, Note.BLUE, Note.WHITE]),
-    Melody("Thunder Res Up [Lo]", [Note.YELLOW, Note.AQUA, Note.MAGENTA]),
-    Melody("Thunder Res Up [Hi]", [Note.YELLOW, Note.YELLOW, Note.BLUE]),
-    Melody("Ice Res Up [Lo]", [Note.YELLOW, Note.WHITE, Note.AQUA]),
-    Melody("Ice Res Up [Lo]", [Note.YELLOW, Note.GREEN, Note.WHITE]),
-    Melody("Ice Res Up [Hi]", [Note.YELLOW, Note.MAGENTA, Note.AQUA]),
-    Melody("Ice Res Up [Hi]", [Note.YELLOW, Note.GREEN, Note.MAGENTA]),
-    Melody("Dragon Res Up [Lo]", [Note.WHITE, Note.YELLOW]),
-    Melody("Dragon Res Up [Hi]", [Note.MAGENTA, Note.YELLOW, Note.YELLOW])
-]
+with (ROOT / "melodies.json").open() as file:
+    melodies: List[Melody] = [
+        Melody(name=melody[0], actions=[Note(note) for note in melody[1]])
+        for melody in json.load(file)
+    ]
