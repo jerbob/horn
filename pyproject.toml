@@ -6,11 +6,12 @@ authors = ["Jeremiah Boby <mail@jeremiahboby.me>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.10"
 docopt = "^0.6.2"
 colorama = "^0.4.3"
 bullet = "^2.2.0"
 prompt-toolkit = "^3.0.7"
+PySide2 = "^5.15.1"
 
 [tool.poetry.scripts]
 horn = "huntinghorn:main"
