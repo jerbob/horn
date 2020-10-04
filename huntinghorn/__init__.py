@@ -13,18 +13,20 @@ Options:
     --notes=<notes>  Notes to filter by [default: ABGMRWY]
 """
 
-__version__ = "0.2.5"
-
 from typing import Optional, Set
 
 from docopt import docopt
+
+from pkg_resources import get_distribution
 
 from huntinghorn.constants import Note, horns, melodies
 from huntinghorn.prompt import prompt_for_horn
 from huntinghorn.utils import Horn
 
+__version__ = get_distribution("huntinghorn").version
 
-def main():
+
+def main() -> None:
     """Entry point for the command line interface."""
     arguments = docopt(__doc__, version=f"horn {__version__}")
 
