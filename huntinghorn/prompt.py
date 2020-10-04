@@ -1,3 +1,4 @@
+from contextlib import suppress
 from typing import Optional
 
 from prompt_toolkit import completion, key_binding, prompt
@@ -20,11 +21,12 @@ def validate_text(event: key_binding.key_processor.KeyPressEvent) -> None:
 
 def prompt_for_horn() -> Optional[Horn]:
     """Prompt the user to select a Horn."""
-    name = str(prompt(
-        "Horn: ",
-        completer=completer,
-        complete_while_typing=True,
-        key_bindings=key_bindings,
-    ))
-    print()
-    return horns.get(name)
+    with suppress(KeyboardInterrupt):
+        name = str(prompt(
+            "Horn: ",
+            completer=completer,
+            complete_while_typing=True,
+            key_bindings=key_bindings,
+        ))
+        print()
+        return horns.get(name)
